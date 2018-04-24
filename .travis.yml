@@ -16,6 +16,6 @@ matrix:
   fast_finish: true
 
 script:
-  - cd cmd/csvnorm && go fmt
-  - cd cmd/csvnorm && go build
-  - cd cmd/csvnorm && go test -race -v cmd/csvnorm/...
+  - cd cmd/csvnorm
+  - go fmt
+  - go build
