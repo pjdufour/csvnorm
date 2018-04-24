@@ -153,11 +153,9 @@ func main() {
 			input[strings.ToLower(h)] = inRow[i]
 		}
 
-		fullname, ok := input["fullname"]
-		if !ok {
-			panic(errors.New("Missing FullName"))
-		}
-		fullname = strings.ToUpper(fullname)
+		fullname := normalizeString(input["fullname"])
+		address := normalizeString(input["address"])
+		notes := normalizeString(input["notes"])
 
 		timestamp, err := parseTimestamp(normalizeString(input["timestamp"]), defaultInputLocation)
 		if err != nil {
@@ -177,17 +175,14 @@ func main() {
 			continue
 		}
 
-		zipcode_int, err := strconv.Atoi(input["zip"])
+		zipcode_int, err := strconv.Atoi(normalizeString(input["zip"]))
 		if err != nil {
 			fmt.Fprintf(os.Stderr, errors.Wrap(err, "Error parsing zipcode").Error()+"\n")
 			continue
 		}
 
-		address := normalizeString(input["address"])
-		notes := normalizeString(input["notes"])
-
 		data := map[string]string{
-			"FullName":      fullname,
+			"FullName":      strings.ToUpper(fullname),
 			"Address":       address,
 			"Timestamp":     timestamp.In(outputLocation).Format(time.RFC3339),
 			"ZIP":           fmt.Sprintf("%05d", zipcode_int),

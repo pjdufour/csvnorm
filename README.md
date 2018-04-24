@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pjdufour/csvnorm.svg)](https://travis-ci.org/pjdufour/csvnorm)
+
 # csvnorm
 
 # Description
