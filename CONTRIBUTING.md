@@ -2,7 +2,7 @@
 
 ## Contributor License Agreement
 
-Thank you for your interest in contributing.
+Thank you for your interest in contributing.  Please be sure to indicate you agree to contribute code under the license in your first pull request.
 
 ## Versioning
 

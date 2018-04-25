@@ -18,4 +18,5 @@ matrix:
 script:
   - cd cmd/csvnorm
   - go fmt
+  - go test
   - go build

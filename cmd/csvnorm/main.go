@@ -18,6 +18,7 @@ import (
 )
 
 var CSVNORM_VERSION = "0.0.1"
+var CSVNORM_USAGE = "Usage: csvnorm [-input_timezone INPUT_TIMEZONE] [-output_timezone OUTPUT_TIMEZONE] [-help] [-version]"
 
 func parseTimestamp(str string, loc *time.Location) (time.Time, error) {
 	var timestamp time.Time
@@ -92,15 +93,15 @@ func main() {
 	var version bool
 	var help bool
 
-	flag.StringVar(&defaultInputTimezoneCode, "-input_timezone", "US/Pacific", "Default timezone for timestamp input.  Matches names in the IANA Time Zone database.")
-	flag.StringVar(&outputTimezoneCode, "-output_timezone", "US/Eastern", "Timezone for timestamp output.  Matches names in the IANA Time Zone database.")
+	flag.StringVar(&defaultInputTimezoneCode, "input_timezone", "US/Pacific", "Default timezone for timestamp input.  Matches names in the IANA Time Zone database.")
+	flag.StringVar(&outputTimezoneCode, "output_timezone", "US/Eastern", "Timezone for timestamp output.  Matches names in the IANA Time Zone database.")
 	flag.BoolVar(&version, "version", false, "Prints version to stdout")
 	flag.BoolVar(&help, "help", false, "Print help")
 
 	flag.Parse()
 
 	if help || (len(os.Args) == 2 && os.Args[1] == "help") {
-		fmt.Println("Usage: csvnorm [-version] [-help]")
+		fmt.Println(CSVNORM_USAGE)
 		flag.PrintDefaults()
 		os.Exit(0)
 	} else if version || (len(os.Args) == 2 && os.Args[1] == "version") {
