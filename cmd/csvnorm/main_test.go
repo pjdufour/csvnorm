@@ -69,7 +69,7 @@ func TestParseDuration(t *testing.T) {
 			t.Errorf("parseDuration(%q) through an error %q", c.in, err)
 		}
 		if got.Seconds() != c.want {
-			t.Errorf("parseDuration(%q) == %q, want %q", c.in, got, c.want)
+			t.Errorf("parseDuration(%q) == %q, want %f", c.in, got, c.want)
 		}
 	}
 }
